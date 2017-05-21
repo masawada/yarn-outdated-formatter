@@ -1,0 +1,3 @@
+major-up-package: https://example.com/major-up-package/changelog
+minor-up-package: https://example.com/minor-up-package/changelog
+patch-up-package: https://example.com/patch-up-package/changelog
