@@ -6,8 +6,8 @@ const fs   = require('fs');
 const argv      = require('minimist')(process.argv.slice(2));
 const Formatter = require('../lib/Formatter');
 
-const selectFormat = (val) => ['markdown', 'json', 'mackerel'].includes(val) ? val : 'markdown';
-const loadYAML = (val) => val ? yaml.safeLoad(fs.readFileSync(val, 'utf8')) : null;
+const selectFormat = val => ['markdown', 'json', 'mackerel'].includes(val) ? val : 'markdown';
+const loadYAML = val => val ? yaml.safeLoad(fs.readFileSync(val, 'utf8')) : null;
 
 // observe stdin
 let stdin = '';
