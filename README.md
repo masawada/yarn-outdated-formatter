@@ -17,7 +17,7 @@ $ yarn outdated --json | $(yarn bin)/format-yarn-outdated
 
 | name | description | example |
 |---|---|---|
-| format | output format [markdown|json|mackerel] \(default: markdown) | --format json |
+| format | output format [markdown&#124;json&#124;mackerel] \(default: markdown) | --format json |
 | excludes | exclude packages (YAML) | --excludes ./excludes.yml |
 | changelogs | changelog urls (YAML) | --changelogs ./changelogs.yml |
 
