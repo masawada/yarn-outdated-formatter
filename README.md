@@ -1,8 +1,9 @@
 yarn-outdated-formatter
 =======================
 
-[![Build Status](https://travis-ci.org/masawada/yarn-outdated-formatter.svg?branch=master)](https://travis-ci.org/masawada/yarn-outdated-formatter)
-[![Coverage Status](https://coveralls.io/repos/github/masawada/yarn-outdated-formatter/badge.svg)](https://coveralls.io/github/masawada/yarn-outdated-formatter)
+[![Build Status](http://img.shields.io/travis/masawada/yarn-outdated-formatter.svg?style=flat-square)](https://travis-ci.org/masawada/yarn-outdated-formatter)
+[![Coverage Status](https://img.shields.io/coveralls/masawada/yarn-outdated-formatter.svg?style=flat-square)](https://coveralls.io/github/masawada/yarn-outdated-formatter?branch=master)
+[![NPM Version](https://img.shields.io/npm/v/yarn-outdated-formatter.svg?style=flat-square)](https://www.npmjs.com/package/yarn-outdated-formatter)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://masawada.mit-license.org/)
 
 ## Usage
