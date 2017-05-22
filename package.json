@@ -6,7 +6,7 @@
   "author": "Masayoshi Wada <masawada@hatena.ne.jp>",
   "license": "MIT",
   "bin": {
-    "format-yarn-outdated": "bin/format-yarn-outdated"
+    "format-yarn-outdated": "bin/format-yarn-outdated.js"
   },
   "dependencies": {
     "js-yaml": "^3.8.4",
