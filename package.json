@@ -1,7 +1,7 @@
 {
   "name": "yarn-outdated-formatter",
   "version": "0.1.0",
-  "main": "lib/formatter.js",
+  "main": "lib/Formatter.js",
   "repository": "https://github.com/masawada/yarn-outdated-formatter.git",
   "author": "Masayoshi Wada <masawada@hatena.ne.jp>",
   "license": "MIT",
