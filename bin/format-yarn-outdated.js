@@ -6,7 +6,13 @@ const meow = require('meow');
 
 const Formatter = require('../lib/Formatter');
 
-const cli = meow();
+const cli = meow('', {
+  alias: {
+    f: 'format',
+    e: 'excludes',
+    c: 'changelogs',
+  },
+});
 
 const selectFormat = val => ['markdown', 'json', 'mackerel'].includes(val) ? val : 'markdown';
 const loadYAML = val => val ? yaml.safeLoad(fs.readFileSync(val, 'utf8')) : null;
