@@ -15,7 +15,7 @@ const loadYAML = val => val ? yaml.safeLoad(fs.readFileSync(val, 'utf8')) : null
 let stdin = '';
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
-process.stdin.on('data', (c) => { stdin += c });
+process.stdin.on('data', (c) => { stdin += c; });
 process.stdin.on('end', () => {
   const json       = JSON.parse(stdin);
   const format     = selectFormat(cli.flags.format);
