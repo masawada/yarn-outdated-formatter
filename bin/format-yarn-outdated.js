@@ -23,5 +23,5 @@ process.stdin.on('end', () => {
   const changelogs = loadYAML(cli.flags.changelogs) || {};
 
   const formatter = new Formatter(format, excludes, changelogs);
-  console.log(formatter.run(json));
+  process.stdout.write(`${formatter.run(json)}\n`);
 });
