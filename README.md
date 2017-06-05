@@ -8,18 +8,35 @@ yarn-outdated-formatter
 
 ## Usage
 
+`format-yarn-outdated --help` shows the help:
+
 ```
-$ yarn add -D yarn-outdated-formatter
-$ yarn outdated --json | $(yarn bin)/format-yarn-outdated
+NAME
+  format-yarn-outdated - yarn outdated --json formater
+
+SYNOPSIS
+  format-yarn-outdated [-h help] [-v version] [-f format]
+                       [-e excludes] [-c changelogs]
+
+OPTIONS
+  --help, -h       Prints the help.
+  --version, -v    Prints the package version.
+  --format, -f     Output format. One of either markdown, json or mackerel can be used. Default: markdown
+  --excludes, -e   Path to YAML file which specify package names to exclude
+  --changelogs, -c Path to YAML file which specify changelog uris for the packages
+
+EXAMPLES
+  $ yarn outdated --json | $(yarn bin)/format-yarn-outdated
+  $ yarn outdated --json | $(yarn bin)/format-yarn-outdated --excludes /path/to/excludes.yml --changelogs /path/to/changelogs.yml
+  $ yarn outdated --json | $(yarn bin)/format-yarn-outdated --format json | jq '.minor[],.patch[] | .[0]' | xargs -I{} yarn upgrade {}
+  $ yarn outdated --json | $(yarn bin)/format-yarn-outdated --format mackerel | mkr throw --service ServiceMetricName
 ```
 
-## Options
+## Examples
 
-| name | description | example |
-|---|---|---|
-| format | output format [markdown&#124;json&#124;mackerel] \(default: markdown) | --format json |
-| excludes | exclude packages (YAML) | --excludes ./excludes.yml |
-| changelogs | changelog urls (YAML) | --changelogs ./changelogs.yml |
+- Markdown: [examples/formatted.md](examples/formatted.md)
+- JSON: [examples/formatted.json](examples/formatted.json)
+- Mackerel: [examples/formatted.mackerel](examples/formatted.mackerel)
 
 ## License
 
