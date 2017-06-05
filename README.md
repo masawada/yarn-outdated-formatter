@@ -12,7 +12,7 @@ yarn-outdated-formatter
 
 ```
 NAME
-  format-yarn-outdated - yarn outdated --json formater
+  format-yarn-outdated - yarn outdated --json formatter
 
 SYNOPSIS
   format-yarn-outdated [-h help] [-v version] [-f format]
