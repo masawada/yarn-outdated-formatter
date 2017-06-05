@@ -32,6 +32,12 @@ EXAMPLES
   $ yarn outdated --json | $(yarn bin)/format-yarn-outdated --format mackerel | mkr throw --service ServiceMetricName
 ```
 
+## Examples
+
+- Markdown: [examples/formatted.md](examples/formatted.md)
+- JSON: [examples/formatted.json](examples/formatted.json)
+- Mackerel: [examples/formatted.mackerel](examples/formatted.mackerel)
+
 ## License
 
 MIT License
