@@ -19,10 +19,17 @@ test('format-yarn-outdated', t => {
   };
 
   formatDiff([], readFile(cd('./data/expected.md')));
+
   formatDiff(['--format', 'markdown'], readFile(cd('./data/expected.md')));
   formatDiff(['--format', 'json'], readFile(cd('./data/expected.json')));
   formatDiff(['--changelogs', cd('./fixture/changelogs.yml')], readFile(cd('./data/expected-with-changelogs.md')));
   formatDiff(['--excludes', cd('./fixture/excludes.yml')], readFile(cd('./data/expected-with-excludes.md')));
 
+  formatDiff(['-f', 'markdown'], readFile(cd('./data/expected.md')));
+  formatDiff(['-f', 'json'], readFile(cd('./data/expected.json')));
+  formatDiff(['-c', cd('./fixture/changelogs.yml')], readFile(cd('./data/expected-with-changelogs.md')));
+  formatDiff(['-e', cd('./fixture/excludes.yml')], readFile(cd('./data/expected-with-excludes.md')));
+
   formatDiffRegex(['--format', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
+  formatDiffRegex(['-f', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
 });
