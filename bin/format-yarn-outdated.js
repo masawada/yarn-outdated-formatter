@@ -5,6 +5,7 @@ const fs   = require('fs');
 const meow = require('meow');
 
 const Formatter = require('../lib/Formatter');
+const generateYaml = require('../lib/generateYaml')
 
 const cli = meow(`
   NAME
@@ -19,6 +20,7 @@ const cli = meow(`
     --version, -v    Prints the package version.
     --format, -f     Output format. One of either markdown, json or mackerel can be used. Default: markdown
     --excludes, -e   Path to YAML file which specify package names to exclude
+    --generate-yaml  Generate YAML file which specify changelog uris for the packages
     --changelogs, -c Path to YAML file which specify changelog uris for the packages
 
   EXAMPLES
@@ -38,6 +40,11 @@ const cli = meow(`
 
 const selectFormat = val => ['markdown', 'json', 'mackerel'].includes(val) ? val : 'markdown';
 const loadYAML = val => val ? yaml.safeLoad(fs.readFileSync(val, 'utf8')) : null;
+
+if (cli.flags.generateYaml) {
+  generateYaml();
+  process.exit(0);
+}
 
 // observe stdin
 let stdin = '';
