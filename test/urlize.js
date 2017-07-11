@@ -1,34 +1,29 @@
 const test  = require('ava');
 const urlize = require('../lib/urlize');
 
-test('user/repo', t => {
-  const input = 'facebook/react';
-  const output = 'https://github.com/facebook/react';
-  t.is(urlize(input), output);
+const expect = 'https://github.com/example/example';
+
+test('example/example', t => {
+  const input = 'example/example';
+  t.is(urlize(input), expect);
 });
 
 test('^git+ssh', t => {
-  const input = 'git+ssh://git@github.com/mikaelbr/node-notifier.git';
-  const output = 'https://github.com/mikaelbr/node-notifier';
-  t.is(urlize(input), output);
+  const input = 'git+ssh://git@github.com/example/example.git';
+  t.is(urlize(input), expect);
 });
 
 test('^git@', t => {
-  const input = 'git@github.com:xjamundx/eslint-plugin-promise.git';
-  const output = 'https://github.com/xjamundx/eslint-plugin-promise';
-  t.is(urlize(input), output);
+  const input = 'git@github.com:example/example.git';
+  t.is(urlize(input), expect);
 });
 
 test('^git+https', t => {
-  const input = 'git+https://github.com/ded/bowser.git';
-  const output = 'https://github.com/ded/bowser';
-  t.is(urlize(input), output);
+  const input = 'git+https://github.com/example/example.git';
+  t.is(urlize(input), expect);
 });
 
 test('http -> https', t => {
-  const input = 'http://github.com/ded/bowser';
-  const output = 'https://github.com/ded/bowser';
-  t.is(urlize(input), output);
+  const input = 'http://github.com/example/example';
+  t.is(urlize(input), expect);
 });
-
-// git@github.com:istanbuljs/nyc.git
