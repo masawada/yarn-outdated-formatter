@@ -34,8 +34,8 @@ test('format-yarn-outdated', t => {
   formatDiffRegex(['-f', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
 });
 
-test('format-yarn-outdated generate-yaml', t => {
-  const result = execa.sync(cd('../bin/format-yarn-outdated.js'), ['generate-yaml']);
+test('format-yarn-outdated generate-changelog-yaml', t => {
+  const result = execa.sync(cd('../bin/format-yarn-outdated.js'), ['generate-changelog-yaml']);
   t.regex(result.stdout, /eslint: https:\/\/github\.com\/eslint\/eslint\/blob\/master\/CHANGELOG\.md/);
   t.regex(result.stdout, /nyc: https:\/\/github\.com\/istanbuljs\/nyc\/blob\/master\/CHANGELOG.md/);
 });

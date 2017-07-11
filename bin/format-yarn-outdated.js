@@ -23,7 +23,7 @@ const cli = meow(`
     --changelogs, -c Path to YAML file which specify changelog uris for the packages
 
   SUBCOMMANDS
-    generate-yaml    Generate YAML file which specify changelog uris for the packages
+    generate-changelog-yaml    Generate YAML file which specify changelog uris for the packages
 
   EXAMPLES
     $ yarn outdated --json | $(yarn bin)/format-yarn-outdated
@@ -45,7 +45,7 @@ const selectFormat = val => ['markdown', 'json', 'mackerel'].includes(val) ? val
 const loadYAML = val => val ? yaml.safeLoad(fs.readFileSync(val, 'utf8')) : null;
 
 
-if (cli.input.includes('generate-yaml')) {
+if (cli.input.includes('generate-changelog-yaml')) {
   generateYaml();
   process.exit(0);
 }
