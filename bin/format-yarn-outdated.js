@@ -5,6 +5,7 @@ const fs   = require('fs');
 const meow = require('meow');
 
 const Formatter = require('../lib/Formatter');
+const parseYarnOutdatedJSON = require('../lib/parseYarnOutdatedJSON');
 
 const cli = meow(`
   NAME
@@ -45,7 +46,12 @@ process.stdin.resume();
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', (c) => { stdin += c; });
 process.stdin.on('end', () => {
-  const json       = JSON.parse(stdin);
+  const json = parseYarnOutdatedJSON(stdin);
+  if (!json) {
+    process.stderr.write('JSON parse failed...\n');
+    process.exit(1);
+  }
+
   const format     = selectFormat(cli.flags.format);
   const excludes   = loadYAML(cli.flags.excludes) || [];
   const changelogs = loadYAML(cli.flags.changelogs) || {};
