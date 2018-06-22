@@ -30,6 +30,13 @@ EXAMPLES
   $ yarn outdated --json | $(yarn bin)/format-yarn-outdated --excludes /path/to/excludes.yml --changelogs /path/to/changelogs.yml
   $ yarn outdated --json | $(yarn bin)/format-yarn-outdated --format json | jq '.minor[],.patch[] | .[0]' | xargs -I{} yarn upgrade {}
   $ yarn outdated --json | $(yarn bin)/format-yarn-outdated --format mackerel | mkr throw --service ServiceMetricName
+
+NPM SUPPORT
+  To detecting dependencies or devDependencies, --long option is required.
+  $ npm outdated --json --long | $(yarn bin)/format-yarn-outdated
+
+  URL will not shown.
+  CHANGELOG URL will not shown unless you set --changelogs option.
 ```
 
 ## Examples
