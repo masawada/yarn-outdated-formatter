@@ -1,0 +1,30 @@
+{
+  "exotic-package": {
+    "current": "1.0.0",
+    "wanted": "git",
+    "latest": "git",
+    "location": "node_modules/exotic",
+    "type": "dependencies"
+  },
+  "major-up-package": {
+    "current": "1.0.0",
+    "wanted": "2.0.0",
+    "latest": "2.0.0",
+    "location": "node_modules/major",
+    "type": "dependencies"
+  },
+  "minor-up-package": {
+    "current": "1.0.0",
+    "wanted": "1.1.0",
+    "latest": "1.1.0",
+    "location": "node_modules/minor",
+    "type": "dependencies"
+  },
+  "patch-up-package": {
+    "current": "1.0.0",
+    "wanted": "1.0.1",
+    "latest": "1.0.1",
+    "location": "node_modules/patch",
+    "type": "dependencies"
+  }
+}

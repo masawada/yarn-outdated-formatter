@@ -61,3 +61,21 @@ test('format-yarn-outdated with yarn@1.2.1', t => {
   formatDiffRegex(['--format', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
   formatDiffRegex(['-f', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
 });
+
+test('format-yarn-outdated with npm', t => {
+  const input = readFile(cd('./fixture/outdated.npm.json'));
+  const formatDiff = (args, expected) => {
+    const result = execa.sync(cd('../bin/format-yarn-outdated.js'), args, { input });
+    t.is(result.stdout, expected);
+  };
+
+  const formatDiffRegex = (args, expectedRegex) => {
+    const result = execa.sync(cd('../bin/format-yarn-outdated.js'), args, { input });
+    t.regex(result.stdout, expectedRegex);
+  };
+
+  formatDiff([], readFile(cd('./data/expected-without-url.md')));
+  formatDiffRegex(['--format', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
+  formatDiffRegex(['-f', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
+
+});
