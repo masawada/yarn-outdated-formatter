@@ -33,7 +33,7 @@ EXAMPLES
 
 NPM SUPPORT
   To detecting dependencies or devDependencies, --long option is required.
-  $ npm outdated --json --long | $(yarn bin)/format-yarn-outdated
+  $ npm outdated --json --long | $(npm bin)/format-yarn-outdated
 
   URL will not shown.
   CHANGELOG URL will not shown unless you set --changelogs option.
