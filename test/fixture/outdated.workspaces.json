@@ -1,0 +1,74 @@
+{
+  "type": "info",
+  "data": "Color legend : \n \"<red>\"    : Major Update backward-incompatible updates \n \"<yellow>\" : Minor Update backward-compatible features \n \"<green>\"  : Patch Update backward-compatible bug fixes"
+}
+{
+  "type": "table",
+  "data": {
+    "head": [
+      "Package",
+      "Current",
+      "Wanted",
+      "Latest",
+      "Workspace",
+      "Package Type",
+      "URL"
+    ],
+    "body": [
+      [
+        "exotic-package",
+        "1.0.0",
+        "exotic",
+        "exotic",
+        "@example/foo",
+        "dependencies",
+        "github:masawada/exotic-example-package#v1.0.0"
+      ],
+      [
+        "major-up-package",
+        "1.0.0",
+        "2.0.0",
+        "2.0.0",
+        "@example/foo",
+        "dependencies",
+        "https://example.com/major"
+      ],
+      [
+        "major-up-package",
+        "1.0.0",
+        "2.0.0",
+        "2.0.0",
+        "@example/bar",
+        "dependencies",
+        "https://example.com/major"
+      ],
+      [
+        "minor-up-package",
+        "1.0.0",
+        "1.1.0",
+        "1.1.0",
+        "@example/foo",
+        "dependencies",
+        "https://example.com/minor"
+      ],
+      [
+        "minor-up-package",
+        "1.0.0",
+        "1.1.0",
+        "1.1.0",
+        "@example/bar",
+        "dependencies",
+        "https://example.com/minor"
+      ],
+      [
+        "patch-up-package",
+        "1.0.0",
+        "1.0.1",
+        "1.0.1",
+        "@example/foo",
+        "dependencies",
+        "https://example.com/patch"
+      ]
+    ]
+  }
+}

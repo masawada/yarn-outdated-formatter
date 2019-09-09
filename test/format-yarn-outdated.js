@@ -13,9 +13,11 @@ test('format-yarn-outdated with yarn@1.0.x', t => {
     t.is(result.stdout, expected);
   };
 
-  const formatDiffRegex = (args, expectedRegex) => {
+  const formatDiffRegexes = (args, expectedRegexes) => {
     const result = execa.sync(cd('../bin/format-yarn-outdated.js'), args, { input });
-    t.regex(result.stdout, expectedRegex);
+    for (const expectedRegex of expectedRegexes) {
+      t.regex(result.stdout, expectedRegex);
+    }
   };
 
   formatDiff([], readFile(cd('./data/expected.md')));
@@ -30,8 +32,16 @@ test('format-yarn-outdated with yarn@1.0.x', t => {
   formatDiff(['-c', cd('./fixture/changelogs.yml')], readFile(cd('./data/expected-with-changelogs.md')));
   formatDiff(['-e', cd('./fixture/excludes.yml')], readFile(cd('./data/expected-with-excludes.md')));
 
-  formatDiffRegex(['--format', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
-  formatDiffRegex(['-f', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
+  formatDiffRegexes(['--format', 'mackerel'], [
+    /outdated_npm_packages\.major\t1\t\d+/,
+    /outdated_npm_packages\.minor\t1\t\d+/,
+    /outdated_npm_packages\.patch\t1\t\d+/,
+  ]);
+  formatDiffRegexes(['-f', 'mackerel'], [
+    /outdated_npm_packages\.major\t1\t\d+/,
+    /outdated_npm_packages\.minor\t1\t\d+/,
+    /outdated_npm_packages\.patch\t1\t\d+/,
+  ]);
 });
 
 test('format-yarn-outdated with yarn@1.2.1', t => {
@@ -41,9 +51,11 @@ test('format-yarn-outdated with yarn@1.2.1', t => {
     t.is(result.stdout, expected);
   };
 
-  const formatDiffRegex = (args, expectedRegex) => {
+  const formatDiffRegexes = (args, expectedRegexes) => {
     const result = execa.sync(cd('../bin/format-yarn-outdated.js'), args, { input });
-    t.regex(result.stdout, expectedRegex);
+    for (const expectedRegex of expectedRegexes) {
+      t.regex(result.stdout, expectedRegex);
+    }
   };
 
   formatDiff([], readFile(cd('./data/expected.md')));
@@ -58,8 +70,54 @@ test('format-yarn-outdated with yarn@1.2.1', t => {
   formatDiff(['-c', cd('./fixture/changelogs.yml')], readFile(cd('./data/expected-with-changelogs.md')));
   formatDiff(['-e', cd('./fixture/excludes.yml')], readFile(cd('./data/expected-with-excludes.md')));
 
-  formatDiffRegex(['--format', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
-  formatDiffRegex(['-f', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
+  formatDiffRegexes(['--format', 'mackerel'], [
+    /outdated_npm_packages\.major\t1\t\d+/,
+    /outdated_npm_packages\.minor\t1\t\d+/,
+    /outdated_npm_packages\.patch\t1\t\d+/,
+  ]);
+  formatDiffRegexes(['-f', 'mackerel'], [
+    /outdated_npm_packages\.major\t1\t\d+/,
+    /outdated_npm_packages\.minor\t1\t\d+/,
+    /outdated_npm_packages\.patch\t1\t\d+/,
+  ]);
+});
+
+test('format-yarn-outdated with yarn workspaces', t => {
+  const input = readFile(cd('./fixture/outdated.workspaces.json'));
+  const formatDiff = (args, expected) => {
+    const result = execa.sync(cd('../bin/format-yarn-outdated.js'), args, { input });
+    t.is(result.stdout, expected);
+  };
+
+  const formatDiffRegexes = (args, expectedRegexes) => {
+    const result = execa.sync(cd('../bin/format-yarn-outdated.js'), args, { input });
+    for (const expectedRegex of expectedRegexes) {
+      t.regex(result.stdout, expectedRegex);
+    }
+  };
+
+  formatDiff([], readFile(cd('./data/expected.workspaces.md')));
+
+  formatDiff(['--format', 'markdown'], readFile(cd('./data/expected.workspaces.md')));
+  formatDiff(['--format', 'json'], readFile(cd('./data/expected.workspaces.json')));
+  formatDiff(['--changelogs', cd('./fixture/changelogs.yml')], readFile(cd('./data/expected-with-changelogs.workspaces.md')));
+  formatDiff(['--excludes', cd('./fixture/excludes.yml')], readFile(cd('./data/expected-with-excludes.workspaces.md')));
+
+  formatDiff(['-f', 'markdown'], readFile(cd('./data/expected.workspaces.md')));
+  formatDiff(['-f', 'json'], readFile(cd('./data/expected.workspaces.json')));
+  formatDiff(['-c', cd('./fixture/changelogs.yml')], readFile(cd('./data/expected-with-changelogs.workspaces.md')));
+  formatDiff(['-e', cd('./fixture/excludes.yml')], readFile(cd('./data/expected-with-excludes.workspaces.md')));
+
+  formatDiffRegexes(['--format', 'mackerel'], [
+    /outdated_npm_packages\.major\t2\t\d+/,
+    /outdated_npm_packages\.minor\t2\t\d+/,
+    /outdated_npm_packages\.patch\t1\t\d+/,
+  ]);
+  formatDiffRegexes(['-f', 'mackerel'], [
+    /outdated_npm_packages\.major\t2\t\d+/,
+    /outdated_npm_packages\.minor\t2\t\d+/,
+    /outdated_npm_packages\.patch\t1\t\d+/,
+  ]);
 });
 
 test('format-yarn-outdated with npm', t => {
@@ -69,13 +127,22 @@ test('format-yarn-outdated with npm', t => {
     t.is(result.stdout, expected);
   };
 
-  const formatDiffRegex = (args, expectedRegex) => {
+  const formatDiffRegexes = (args, expectedRegexes) => {
     const result = execa.sync(cd('../bin/format-yarn-outdated.js'), args, { input });
-    t.regex(result.stdout, expectedRegex);
+    for (const expectedRegex of expectedRegexes) {
+      t.regex(result.stdout, expectedRegex);
+    }
   };
 
   formatDiff([], readFile(cd('./data/expected-without-url.md')));
-  formatDiffRegex(['--format', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
-  formatDiffRegex(['-f', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
-
+  formatDiffRegexes(['--format', 'mackerel'], [
+    /outdated_npm_packages\.major\t1\t\d+/,
+    /outdated_npm_packages\.minor\t1\t\d+/,
+    /outdated_npm_packages\.patch\t1\t\d+/,
+  ]);
+  formatDiffRegexes(['-f', 'mackerel'], [
+    /outdated_npm_packages\.major\t1\t\d+/,
+    /outdated_npm_packages\.minor\t1\t\d+/,
+    /outdated_npm_packages\.patch\t1\t\d+/,
+  ]);
 });
