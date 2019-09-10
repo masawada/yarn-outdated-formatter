@@ -13,7 +13,7 @@ const cli = meow(`
 
   SYNOPSIS
     format-yarn-outdated [-h help] [-v version] [-f format]
-                         [-e excludes] [-c changelogs]
+                         [-e excludes] [-c changelogs] [-w workspaces]
 
   OPTIONS
     --help, -h       Prints the help.
@@ -21,6 +21,7 @@ const cli = meow(`
     --format, -f     Output format. One of either markdown, json or mackerel can be used. Default: markdown
     --excludes, -e   Path to YAML file which specify package names to exclude
     --changelogs, -c Path to YAML file which specify changelog uris for the packages
+    --workspaces, -w Regular expression to match against workspaces
 
   EXAMPLES
     $ yarn outdated --json | $(yarn bin)/format-yarn-outdated
@@ -41,6 +42,7 @@ const cli = meow(`
     f: 'format',
     e: 'excludes',
     c: 'changelogs',
+    w: 'workspaces',
   },
 });
 
@@ -62,7 +64,8 @@ process.stdin.on('end', () => {
   const format     = selectFormat(cli.flags.format);
   const excludes   = loadYAML(cli.flags.excludes) || [];
   const changelogs = loadYAML(cli.flags.changelogs) || {};
+  const workspaces = cli.flags.workspaces ? new RegExp(cli.flags.workspaces) : undefined;
 
-  const formatter = new Formatter(format, excludes, changelogs);
+  const formatter = new Formatter(format, excludes, changelogs, workspaces);
   process.stdout.write(`${formatter.run(json)}\n`);
 });

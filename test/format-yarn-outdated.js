@@ -99,12 +99,18 @@ test('format-yarn-outdated with yarn workspaces', t => {
   formatDiff([], readFile(cd('./data/expected.workspaces.md')));
 
   formatDiff(['--format', 'markdown'], readFile(cd('./data/expected.workspaces.md')));
+  formatDiff(['--format', 'markdown', '--workspaces', '^@example/'], readFile(cd('./data/expected.workspaces.md')));
+  formatDiff(['--format', 'markdown', '--workspaces', 'foo'], readFile(cd('./data/expected.workspaces.regex.md')));
+  formatDiff(['--format', 'markdown', '--workspaces', '^(?!@example/bar)'], readFile(cd('./data/expected.workspaces.regex.md')));
   formatDiff(['--format', 'json'], readFile(cd('./data/expected.workspaces.json')));
+  formatDiff(['--format', 'json', '--workspaces', 'foo'], readFile(cd('./data/expected.workspaces.regex.json')));
   formatDiff(['--changelogs', cd('./fixture/changelogs.yml')], readFile(cd('./data/expected-with-changelogs.workspaces.md')));
   formatDiff(['--excludes', cd('./fixture/excludes.yml')], readFile(cd('./data/expected-with-excludes.workspaces.md')));
 
   formatDiff(['-f', 'markdown'], readFile(cd('./data/expected.workspaces.md')));
+  formatDiff(['-f', 'markdown', '-w', 'foo'], readFile(cd('./data/expected.workspaces.regex.md')));
   formatDiff(['-f', 'json'], readFile(cd('./data/expected.workspaces.json')));
+  formatDiff(['-f', 'json', '-w', 'foo'], readFile(cd('./data/expected.workspaces.regex.json')));
   formatDiff(['-c', cd('./fixture/changelogs.yml')], readFile(cd('./data/expected-with-changelogs.workspaces.md')));
   formatDiff(['-e', cd('./fixture/excludes.yml')], readFile(cd('./data/expected-with-excludes.workspaces.md')));
 
@@ -113,9 +119,19 @@ test('format-yarn-outdated with yarn workspaces', t => {
     /outdated_npm_packages\.minor\t2\t\d+/,
     /outdated_npm_packages\.patch\t1\t\d+/,
   ]);
+  formatDiffRegexes(['--format', 'mackerel', '--workspaces', 'foo'], [
+    /outdated_npm_packages\.major\t1\t\d+/,
+    /outdated_npm_packages\.minor\t1\t\d+/,
+    /outdated_npm_packages\.patch\t1\t\d+/,
+  ]);
   formatDiffRegexes(['-f', 'mackerel'], [
     /outdated_npm_packages\.major\t2\t\d+/,
     /outdated_npm_packages\.minor\t2\t\d+/,
+    /outdated_npm_packages\.patch\t1\t\d+/,
+  ]);
+  formatDiffRegexes(['-f', 'mackerel', '-w', 'foo'], [
+    /outdated_npm_packages\.major\t1\t\d+/,
+    /outdated_npm_packages\.minor\t1\t\d+/,
     /outdated_npm_packages\.patch\t1\t\d+/,
   ]);
 });
