@@ -13,7 +13,8 @@ const cli = meow(`
 
   SYNOPSIS
     format-yarn-outdated [-h help] [-v version] [-f format]
-                         [-e excludes] [-c changelogs] [-w workspaces]
+                         [-e excludes] [-c changelogs]
+                         [-w workspaces] [-u]
 
   OPTIONS
     --help, -h       Prints the help.
@@ -22,6 +23,7 @@ const cli = meow(`
     --excludes, -e   Path to YAML file which specify package names to exclude
     --changelogs, -c Path to YAML file which specify changelog uris for the packages
     --workspaces, -w Regular expression to match against workspaces
+    --unique, -u     Counts duplicate packages in workspaces only once when output format is mackerel
 
   EXAMPLES
     $ yarn outdated --json | $(yarn bin)/format-yarn-outdated
@@ -43,6 +45,7 @@ const cli = meow(`
     e: 'excludes',
     c: 'changelogs',
     w: 'workspaces',
+    u: 'unique',
   },
 });
 
@@ -65,7 +68,8 @@ process.stdin.on('end', () => {
   const excludes   = loadYAML(cli.flags.excludes) || [];
   const changelogs = loadYAML(cli.flags.changelogs) || {};
   const workspaces = cli.flags.workspaces ? new RegExp(cli.flags.workspaces) : undefined;
+  const unique     = cli.flags.unique || false;
 
-  const formatter = new Formatter(format, excludes, changelogs, workspaces);
+  const formatter = new Formatter(format, excludes, changelogs, workspaces, unique);
   process.stdout.write(`${formatter.run(json)}\n`);
 });

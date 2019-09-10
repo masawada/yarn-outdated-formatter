@@ -115,8 +115,8 @@ test('format-yarn-outdated with yarn workspaces', t => {
   formatDiff(['-e', cd('./fixture/excludes.yml')], readFile(cd('./data/expected-with-excludes.workspaces.md')));
 
   formatDiffRegexes(['--format', 'mackerel'], [
-    /outdated_npm_packages\.major\t2\t\d+/,
-    /outdated_npm_packages\.minor\t2\t\d+/,
+    /outdated_npm_packages\.major\t1\t\d+/,
+    /outdated_npm_packages\.minor\t3\t\d+/,
     /outdated_npm_packages\.patch\t1\t\d+/,
   ]);
   formatDiffRegexes(['--format', 'mackerel', '--workspaces', 'foo'], [
@@ -124,12 +124,22 @@ test('format-yarn-outdated with yarn workspaces', t => {
     /outdated_npm_packages\.minor\t1\t\d+/,
     /outdated_npm_packages\.patch\t1\t\d+/,
   ]);
+  formatDiffRegexes(['--format', 'mackerel', '--unique'], [
+    /outdated_npm_packages\.major\t1\t\d+/,
+    /outdated_npm_packages\.minor\t1\t\d+/,
+    /outdated_npm_packages\.patch\t1\t\d+/,
+  ]);
   formatDiffRegexes(['-f', 'mackerel'], [
-    /outdated_npm_packages\.major\t2\t\d+/,
-    /outdated_npm_packages\.minor\t2\t\d+/,
+    /outdated_npm_packages\.major\t1\t\d+/,
+    /outdated_npm_packages\.minor\t3\t\d+/,
     /outdated_npm_packages\.patch\t1\t\d+/,
   ]);
   formatDiffRegexes(['-f', 'mackerel', '-w', 'foo'], [
+    /outdated_npm_packages\.major\t1\t\d+/,
+    /outdated_npm_packages\.minor\t1\t\d+/,
+    /outdated_npm_packages\.patch\t1\t\d+/,
+  ]);
+  formatDiffRegexes(['-f', 'mackerel', '-u'], [
     /outdated_npm_packages\.major\t1\t\d+/,
     /outdated_npm_packages\.minor\t1\t\d+/,
     /outdated_npm_packages\.patch\t1\t\d+/,

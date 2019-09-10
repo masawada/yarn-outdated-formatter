@@ -1,7 +1,7 @@
 # Major
 | Package | Current | Wanted | Latest | Workspace | Package Type | URL | CHANGELOG |
 |---|---|---|---|---|---|---|---|
-| major-up-package | 1.0.0 | 2.0.0 | 2.0.0 | @example/foo | dependencies | https://example.com/major |  |
+| major-up-package | 1.0.0 | 2.1.0 | 2.1.0 | @example/foo | dependencies | https://example.com/major |  |
 
 # Minor
 | Package | Current | Wanted | Latest | Workspace | Package Type | URL | CHANGELOG |

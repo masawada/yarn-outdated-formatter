@@ -27,17 +27,17 @@
       [
         "major-up-package",
         "1.0.0",
-        "2.0.0",
-        "2.0.0",
+        "2.1.0",
+        "2.1.0",
         "@example/foo",
         "dependencies",
         "https://example.com/major"
       ],
       [
         "major-up-package",
-        "1.0.0",
         "2.0.0",
-        "2.0.0",
+        "2.1.0",
+        "2.1.0",
         "@example/bar",
         "dependencies",
         "https://example.com/major"
