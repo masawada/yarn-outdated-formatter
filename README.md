@@ -21,7 +21,7 @@ SYNOPSIS
 OPTIONS
   --help, -h       Prints the help.
   --version, -v    Prints the package version.
-  --format, -f     Output format. One of either markdown, json or mackerel can be used. Default: markdown
+  --format, -f     Output format. One of either markdown, json, mackerel or csv can be used. Default: markdown
   --excludes, -e   Path to YAML file which specify package names to exclude
   --changelogs, -c Path to YAML file which specify changelog uris for the packages
 
@@ -44,6 +44,7 @@ NPM SUPPORT
 - Markdown: [examples/formatted.md](examples/formatted.md)
 - JSON: [examples/formatted.json](examples/formatted.json)
 - Mackerel: [examples/formatted.mackerel](examples/formatted.mackerel)
+- CSV: [examples/formatted.csv](examples/formatted.csv)
 
 ## License
 

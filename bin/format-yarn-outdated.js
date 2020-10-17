@@ -18,7 +18,7 @@ const cli = meow(`
   OPTIONS
     --help, -h       Prints the help.
     --version, -v    Prints the package version.
-    --format, -f     Output format. One of either markdown, json or mackerel can be used. Default: markdown
+    --format, -f     Output format. One of either markdown, json, mackerel or csv can be used. Default: markdown
     --excludes, -e   Path to YAML file which specify package names to exclude
     --changelogs, -c Path to YAML file which specify changelog uris for the packages
 
@@ -27,6 +27,7 @@ const cli = meow(`
     $ yarn outdated --json | $(yarn bin)/format-yarn-outdated --excludes /path/to/excludes.yml --changelogs /path/to/changelogs.yml
     $ yarn outdated --json | $(yarn bin)/format-yarn-outdated --format json | jq '.minor[],.patch[] | .[0]' | xargs -I{} yarn upgrade {}
     $ yarn outdated --json | $(yarn bin)/format-yarn-outdated --format mackerel | mkr throw --service ServiceMetricName
+    $ yarn outdated --json | $(yarn bin)/format-yarn-outdated --format csv > outdated.csv
 
   NPM SUPPORT
     To detecting dependencies or devDependencies, --long option is required.
@@ -44,7 +45,7 @@ const cli = meow(`
   },
 });
 
-const selectFormat = val => ['markdown', 'json', 'mackerel'].includes(val) ? val : 'markdown';
+const selectFormat = val => ['markdown', 'json', 'mackerel', 'csv'].includes(val) ? val : 'markdown';
 const loadYAML = val => val ? yaml.safeLoad(fs.readFileSync(val, 'utf8')) : null;
 
 // observe stdin

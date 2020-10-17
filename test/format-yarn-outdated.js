@@ -32,6 +32,9 @@ test('format-yarn-outdated with yarn@1.0.x', t => {
 
   formatDiffRegex(['--format', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
   formatDiffRegex(['-f', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
+
+  formatDiff(['--format', 'csv'], readFile(cd('./data/expected.csv')));
+  formatDiff(['-f', 'csv'], readFile(cd('./data/expected.csv')));
 });
 
 test('format-yarn-outdated with yarn@1.2.1', t => {
@@ -60,6 +63,9 @@ test('format-yarn-outdated with yarn@1.2.1', t => {
 
   formatDiffRegex(['--format', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
   formatDiffRegex(['-f', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
+
+  formatDiff(['--format', 'csv'], readFile(cd('./data/expected.csv')));
+  formatDiff(['-f', 'csv'], readFile(cd('./data/expected.csv')));
 });
 
 test('format-yarn-outdated with npm', t => {
@@ -78,4 +84,6 @@ test('format-yarn-outdated with npm', t => {
   formatDiffRegex(['--format', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
   formatDiffRegex(['-f', 'mackerel'], /outdated_npm_packages\.(major|minor|patch)\t1\t\d+/);
 
+  formatDiff(['--format', 'csv'], readFile(cd('./data/expected-without-url.csv')));
+  formatDiff(['-f', 'csv'], readFile(cd('./data/expected-without-url.csv')));
 });
