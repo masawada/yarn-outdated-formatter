@@ -27,8 +27,8 @@
     ]
   },
   "scripts": {
-    "ci": "npm run lint && npm run test",
     "lint": "eslint lib test",
-    "test": "nyc ava test"
+    "test": "nyc ava test",
+    "coverage": "nyc report --reporter=text-lcov"
   }
 }
