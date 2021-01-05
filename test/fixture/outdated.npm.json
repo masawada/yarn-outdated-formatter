@@ -26,5 +26,26 @@
     "latest": "1.0.1",
     "location": "node_modules/patch",
     "type": "dependencies"
+  },
+  "pre-major-release-minor-up-package": {
+    "current": "0.1.0",
+    "wanted": "0.2.1",
+    "latest": "0.2.1",
+    "location": "node_modules/pre-major-release-minor-up",
+    "type": "dependencies"
+  },
+  "pre-major-release-patch-up-package": {
+    "current": "0.0.1",
+    "wanted": "0.0.2",
+    "latest": "0.0.2",
+    "location": "node_modules/pre-major-release-patch-up",
+    "type": "dependencies"
+  },
+  "pre-minor-release-patch-up-package": {
+    "current": "0.1.1",
+    "wanted": "0.1.2",
+    "latest": "0.1.2",
+    "location": "node_modules/pre-minor-release-patch-up",
+    "type": "dependencies"
   }
 }
