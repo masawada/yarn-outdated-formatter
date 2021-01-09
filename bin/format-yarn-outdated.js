@@ -36,17 +36,17 @@ const cli = meow(`
     URL will not shown.
     CHANGELOG URL will not shown unless you set --changelogs option.
 `, {
-  alias: {
-    h: 'help',
-    v: 'version',
-    f: 'format',
-    e: 'excludes',
-    c: 'changelogs',
+  flags: {
+    help:       { type: 'boolean', alias: 'h' },
+    version:    { type: 'boolean', alias: 'v' },
+    format:     { type: 'string',  alias: 'f' },
+    excludes:   { type: 'string',  alias: 'e' },
+    changelogs: { type: 'string',  alias: 'c' },
   },
 });
 
 const selectFormat = val => ['markdown', 'json', 'mackerel', 'csv'].includes(val) ? val : 'markdown';
-const loadYAML = val => val ? yaml.safeLoad(fs.readFileSync(val, 'utf8')) : null;
+const loadYAML = val => val ? yaml.load(fs.readFileSync(val, 'utf8')) : null;
 
 // observe stdin
 let stdin = '';
