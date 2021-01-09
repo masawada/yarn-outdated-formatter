@@ -46,7 +46,7 @@ const cli = meow(`
 });
 
 const selectFormat = val => ['markdown', 'json', 'mackerel', 'csv'].includes(val) ? val : 'markdown';
-const loadYAML = val => val ? yaml.safeLoad(fs.readFileSync(val, 'utf8')) : null;
+const loadYAML = val => val ? yaml.load(fs.readFileSync(val, 'utf8')) : null;
 
 // observe stdin
 let stdin = '';
