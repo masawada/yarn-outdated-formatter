@@ -5,13 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [2.2.1] - 2020-01-09
+### Fixed
 - Upgrade some dependencies
 
 ## [2.2.0] - 2020-10-17
 ### Added
 - Add support for CSV
 
-### Changed
+### Fixed
 - Upgrade some dependencies
 
 ## [2.1.0] - 2019-02-14
