@@ -41,6 +41,30 @@
         "1.0.1",
         "dependencies",
         "https://example.com/patch"
+      ],
+      [
+        "pre-major-release-minor-up-package",
+        "0.1.0",
+        "0.2.1",
+        "0.2.1",
+        "dependencies",
+        "https://example.com/pre-major-minor"
+      ],
+      [
+        "pre-major-release-patch-up-package",
+        "0.0.1",
+        "0.0.2",
+        "0.0.2",
+        "dependencies",
+        "https://example.com/pre-major-patch"
+      ],
+      [
+        "pre-minor-release-patch-up-package",
+        "0.1.1",
+        "0.1.2",
+        "0.1.2",
+        "dependencies",
+        "https://example.com/pre-minor-patch"
       ]
     ]
   }
