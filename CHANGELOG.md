@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.1] - 2021-06-26
+### Fixed
+- Upgrade vulnerable dependencies
+
 ## [3.0.0] - 2020-01-09
 ### Changed
 - Change behaviour of pre-release version numbers to match that of yarn
