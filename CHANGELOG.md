@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Upgrade vulnerable dependencies
 
-## [3.0.0] - 2020-01-09
+## [3.0.0] - 2021-01-09
 ### Changed
 - Change behaviour of pre-release version numbers to match that of yarn
 
@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Upgrade all dependencies
 
-## [2.2.1] - 2020-01-09
+## [2.2.1] - 2021-01-09
 ### Fixed
 - Upgrade some dependencies
 
